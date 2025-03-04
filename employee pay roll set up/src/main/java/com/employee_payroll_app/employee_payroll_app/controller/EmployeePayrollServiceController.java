@@ -6,6 +6,8 @@ import com.employee_payroll_app.employee_payroll_app.service.EmployeePayrollServ
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/employeepayrollservice")
 public class EmployeePayrollServiceController {
@@ -18,9 +20,14 @@ public class EmployeePayrollServiceController {
         return "Get Employee payroll default route";
     }
 
-    @GetMapping("/get/{id}")
-    public EmployeePayroll getEmployeePayrollById(@PathVariable String id){
-        return employeePayrollService.getEmployeePayrollById(Long.parseLong(id));
+    @GetMapping("/get/{name}")
+    public EmployeePayroll getEmployeePayrollByName(@PathVariable String name){
+        return employeePayrollService.getEmployeePayrollByName(name);
+    }
+
+    @GetMapping("/get/all")
+    public List<EmployeePayroll> getEmployeePayrolls(){
+        return employeePayrollService.getEmployeePayrolls();
     }
 
     @PostMapping("/create")

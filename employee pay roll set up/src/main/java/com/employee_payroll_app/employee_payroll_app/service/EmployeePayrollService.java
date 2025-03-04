@@ -1,4 +1,6 @@
+
 package com.employee_payroll_app.employee_payroll_app.service;
+
 import com.employee_payroll_app.employee_payroll_app.dto.EmployeePayrollDto;
 import com.employee_payroll_app.employee_payroll_app.model.EmployeePayroll;
 import org.springframework.stereotype.Service;
@@ -7,8 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-
 public class EmployeePayrollService {
+
     private final List<EmployeePayroll> employeePayrolls = new ArrayList<>();
 
     public EmployeePayroll getEmployeePayrollById(Long id) {
@@ -18,6 +20,19 @@ public class EmployeePayrollService {
             }
         }
         return null;
+    }
+
+    public EmployeePayroll getEmployeePayrollByName(String name) {
+        for (EmployeePayroll employeePayroll : employeePayrolls) {
+            if (employeePayroll.getName().equals(name)) {
+                return employeePayroll;
+            }
+        }
+        return null;
+    }
+
+    public List<EmployeePayroll> getEmployeePayrolls(){
+        return employeePayrolls;
     }
 
     public EmployeePayroll createEmployeePayroll(EmployeePayrollDto employeePayrollDto) {
@@ -48,4 +63,3 @@ public class EmployeePayrollService {
     }
 
 }
-
