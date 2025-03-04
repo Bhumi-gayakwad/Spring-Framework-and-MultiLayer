@@ -1,6 +1,8 @@
+
 package com.employee_payroll_app.employee_payroll_app.dto;
 
 public class EmployeePayrollDto {
+
     private String name;
     private double salary;
 
@@ -28,4 +30,3 @@ public class EmployeePayrollDto {
     }
 
 }
-
