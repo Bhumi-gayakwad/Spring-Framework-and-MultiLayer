@@ -3,6 +3,7 @@ package com.employee_payroll_app.employee_payroll_app.controller;
 import com.employee_payroll_app.employee_payroll_app.dto.EmployeePayrollDto;
 import com.employee_payroll_app.employee_payroll_app.model.EmployeePayroll;
 import com.employee_payroll_app.employee_payroll_app.service.EmployeePayrollService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class EmployeePayrollServiceController {
     }
 
     @PostMapping("/create")
-    public EmployeePayroll createEmployeePayroll(@RequestBody EmployeePayrollDto employeePayroll){
+    public EmployeePayroll createEmployeePayroll(@Valid @RequestBody EmployeePayrollDto employeePayroll){
         log.info("creating employee payroll using following employee payroll dto {}", employeePayroll);
         EmployeePayroll newEmployeePayroll = employeePayrollService.createEmployeePayroll(employeePayroll);
         log.info("new employee payroll created using employee payroll dto is {}", newEmployeePayroll);
@@ -48,7 +49,7 @@ public class EmployeePayrollServiceController {
     }
 
     @PutMapping("/update")
-    public EmployeePayroll updateEmployeePayroll(@RequestBody EmployeePayrollDto employeePayrollDto){
+    public EmployeePayroll updateEmployeePayroll(@Valid @RequestBody EmployeePayrollDto employeePayrollDto){
         log.info("updating employee payroll using employee payroll dto {}", employeePayrollDto);
         EmployeePayroll updatedEmployeePayroll = employeePayrollService.updateEmployeePayroll(employeePayrollDto);
         log.info("updated employee payroll using employee payroll dto is {}", updatedEmployeePayroll);
